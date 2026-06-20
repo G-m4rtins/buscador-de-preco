@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="mobile-overlay" *ngIf="isSidebarOpen()" (click)="toggleSidebar()"></div>
+  <app-sidebar [class.open]="isSidebarOpen()"></app-sidebar>
+  <div class="main-content">
+    <app-header (menuClick)="toggleSidebar()"></app-header>
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

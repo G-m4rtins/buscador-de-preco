@@ -1,0 +1,62 @@
+<form class="search-form" (submit)="onSubmit($event)">
+  <div class="search-form-header">
+    <i class="ph ph-magnifying-glass text-primary"></i>
+    <span class="font-semibold text-primary">Novo Buscar Preços</span>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-group span-2">
+      <label>Produto ou Serviço</label>
+      <div class="input-wrapper">
+        <input type="text" [(ngModel)]="query" name="query" placeholder="Ex.: Notebook Dell Inspiron 15" required>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Categoria</label>
+      <div class="input-wrapper select-wrapper">
+        <select [(ngModel)]="category" name="category">
+          <option value="all">Qualquer Categoria</option>
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+        <i class="ph ph-caret-down select-icon"></i>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Região / CEP (opcional)</label>
+      <div class="input-wrapper">
+        <i class="ph ph-map-pin input-icon"></i>
+        <input type="text" placeholder="Ex.: 01000-000">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Quantidade (opcional)</label>
+      <div class="input-wrapper stepper-wrapper">
+        <button type="button" class="stepper-btn"><i class="ph ph-minus"></i></button>
+        <input type="text" value="1" class="stepper-input">
+        <button type="button" class="stepper-btn"><i class="ph ph-plus"></i></button>
+      </div>
+    </div>
+
+    <div class="form-group span-2">
+      <label>Ordenar por</label>
+      <div class="input-wrapper select-wrapper">
+        <select [(ngModel)]="sort" name="sort">
+          <option value="menor-preco">Menor preço</option>
+          <option value="maior-preco">Maior preço</option>
+          <option value="relevancia">Relevância</option>
+        </select>
+        <i class="ph ph-caret-down select-icon"></i>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary">
+        <i class="ph ph-magnifying-glass"></i>
+        Buscar Preços
+      </button>
+    </div>
+  </div>
+</form>

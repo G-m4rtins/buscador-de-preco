@@ -1,0 +1,46 @@
+<div class="result-card">
+  <div class="store-info">
+    <div class="store-logo-wrapper" [style.color]="data.storeColor">
+      <img *ngIf="data.thumbnail" [src]="data.thumbnail" alt="Produto" class="product-thumb">
+      <i *ngIf="!data.thumbnail" class="ph" [ngClass]="data.storeLogo" style="font-size: 2.5rem;"></i>
+    </div>
+    <div class="store-details">
+      <span class="store-name">{{ data.store }}</span>
+      <div class="store-trust" *ngIf="data.trusted">
+        <i class="ph-fill ph-shield-check"></i>
+        <span>Confiável</span>
+      </div>
+      <div class="store-rating" *ngIf="data.rating">
+        <span>{{ data.rating }}</span>
+        <i class="ph-fill ph-star text-warning"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-info">
+    <h3 class="product-name">{{ data.product }}</h3>
+    <p class="product-details">{{ data.details }}</p>
+    <div class="shipping-info">
+      <span class="badge-shipping">
+        <i class="ph ph-truck"></i> {{ data.shipping }}
+      </span>
+      <span class="badge-delivery" *ngIf="data.delivery">
+        <i class="ph ph-calendar-blank"></i> {{ data.delivery }}
+      </span>
+    </div>
+  </div>
+
+  <div class="price-info">
+    <div class="price-value">R$ {{ data.price }}</div>
+    <div class="price-condition">{{ data.paymentCondition }}</div>
+  </div>
+
+  <div class="card-actions">
+    <a [href]="data.link" target="_blank" rel="noopener noreferrer" class="btn-outline">
+      Ver oferta <i class="ph ph-arrow-square-out"></i>
+    </a>
+    <button class="save-btn" (click)="toggleFavorite()" [ngClass]="{'active': isFavorite()}">
+      <i class="ph" [ngClass]="isFavorite() ? 'ph-heart-fill' : 'ph-heart'"></i>
+    </button>
+  </div>
+</div>

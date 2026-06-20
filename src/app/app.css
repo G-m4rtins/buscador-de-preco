@@ -1,0 +1,44 @@
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+@media (max-width: 1024px) {
+  .content-area {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-area {
+    padding: 1rem;
+  }
+
+  /* Show overlay when sidebar is open */
+  app-sidebar.open + .main-content {
+    pointer-events: none;
+  }
+
+  .mobile-overlay {
+    display: block; /* But we toggle it with *ngIf */
+  }
+}
